@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterfirebaseauth/generated/l10n.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static const routeName = '/';
+
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
