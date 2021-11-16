@@ -47,21 +47,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Flutter Firebase Auth`
+  /// `Flutter\nAuth`
   String get title {
     return Intl.message(
-      'Flutter Firebase Auth',
+      'Flutter\nAuth',
       name: 'title',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome`
-  String get welcome {
+  /// `Phone Sign In`
+  String get phoneSignIn {
     return Intl.message(
-      'Welcome',
-      name: 'welcome',
+      'Phone Sign In',
+      name: 'phoneSignIn',
       desc: '',
       args: [],
     );

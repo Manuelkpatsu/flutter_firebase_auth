@@ -1,5 +1,5 @@
 {
   "@@locale": "en",
-  "title": "Flutter Firebase Auth",
-  "welcome": "Welcome"
+  "title": "Flutter\nAuth",
+  "phoneSignIn": "Phone Sign In"
 }
