@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-
+    "title" : MessageLookupByLibrary.simpleMessage("Flutter Firebase Auth"),
+    "welcome" : MessageLookupByLibrary.simpleMessage("Welcome")
   };
 }

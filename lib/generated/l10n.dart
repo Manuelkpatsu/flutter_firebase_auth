@@ -47,7 +47,25 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Flutter Firebase Auth`
+  String get title {
+    return Intl.message(
+      'Flutter Firebase Auth',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
 
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
