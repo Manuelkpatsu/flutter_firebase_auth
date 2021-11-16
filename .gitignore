@@ -34,6 +34,9 @@
 # Web related
 lib/generated_plugin_registrant.dart
 
+lib/generated/i18n.dart
+res/
+
 # Symbolication related
 app.*.symbols
 
