@@ -40,14 +40,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Rubik',
         scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blueGrey,
+        primaryColor: Colors.white,
         appBarTheme: const AppBarTheme(
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(color: Colors.black),
           systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
+            primary: Colors.black,
             onPrimary: Colors.white,
           ),
         ),

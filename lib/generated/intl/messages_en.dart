@@ -19,9 +19,22 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static m0(message) => "Phone number verification failed: ${message}";
+
+  static m1(error) => "Failed to sign in: ${error}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "enterPhoneNumber" : MessageLookupByLibrary.simpleMessage("Enter your mobile number"),
+    "invalidPhoneNumber" : MessageLookupByLibrary.simpleMessage("The phone number you entered is invalid."),
+    "next" : MessageLookupByLibrary.simpleMessage("Next"),
+    "phoneNumberHint" : MessageLookupByLibrary.simpleMessage("Mobile number"),
+    "phoneNumberRequired" : MessageLookupByLibrary.simpleMessage("Phone number is required."),
+    "phoneNumberVerificationFailed" : m0,
     "phoneSignIn" : MessageLookupByLibrary.simpleMessage("Phone Sign In"),
-    "title" : MessageLookupByLibrary.simpleMessage("Flutter\nAuth")
+    "signInError" : m1,
+    "signInSuccessfulWithNullUser" : MessageLookupByLibrary.simpleMessage("Phone number verified and user signed in but user is null"),
+    "title" : MessageLookupByLibrary.simpleMessage("Flutter\nAuth"),
+    "youMayReceiveSMS" : MessageLookupByLibrary.simpleMessage("If you continue, you may receive an SMS for verification.")
   };
 }

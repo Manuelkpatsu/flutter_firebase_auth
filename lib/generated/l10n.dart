@@ -66,6 +66,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter your mobile number`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Enter your mobile number',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile number`
+  String get phoneNumberHint {
+    return Intl.message(
+      'Mobile number',
+      name: 'phoneNumberHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you continue, you may receive an SMS for verification.`
+  String get youMayReceiveSMS {
+    return Intl.message(
+      'If you continue, you may receive an SMS for verification.',
+      name: 'youMayReceiveSMS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number verified and user signed in but user is null`
+  String get signInSuccessfulWithNullUser {
+    return Intl.message(
+      'Phone number verified and user signed in but user is null',
+      name: 'signInSuccessfulWithNullUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to sign in: {error}`
+  String signInError(Object error) {
+    return Intl.message(
+      'Failed to sign in: $error',
+      name: 'signInError',
+      desc: '',
+      args: [error],
+    );
+  }
+
+  /// `Phone number is required.`
+  String get phoneNumberRequired {
+    return Intl.message(
+      'Phone number is required.',
+      name: 'phoneNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The phone number you entered is invalid.`
+  String get invalidPhoneNumber {
+    return Intl.message(
+      'The phone number you entered is invalid.',
+      name: 'invalidPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number verification failed: {message}`
+  String phoneNumberVerificationFailed(Object message) {
+    return Intl.message(
+      'Phone number verification failed: $message',
+      name: 'phoneNumberVerificationFailed',
+      desc: '',
+      args: [message],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
