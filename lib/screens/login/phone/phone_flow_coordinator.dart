@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebaseauth/model/country.dart';
 import 'package:flutterfirebaseauth/screens/account/profile/profile_screen.dart';
 
 import 'country/select_country_screen.dart';
@@ -19,7 +20,14 @@ abstract class PhoneFlowCoordinator {
   /// [phoneNumber] phone number to verify
   void goToEnterOTPScreen(String verificationId, String phoneNumber);
 
-  void goToSelectCountryScreen();
+  /// Navigates to SelectCountryScreen and returns the
+  /// selected country when closed
+  Future<Country?> goToSelectCountryScreen();
+
+  /// Closes SelectCountryScreen and returns the selected country
+  ///
+  /// [selectedCountry] country selected by the user
+  void closeSelectCountryScreen(Country selectedCountry);
 }
 
 class MyPhoneFlowCoordinator implements PhoneFlowCoordinator {
@@ -44,11 +52,18 @@ class MyPhoneFlowCoordinator implements PhoneFlowCoordinator {
   }
 
   @override
-  void goToSelectCountryScreen() {
-    Navigator.push(
+  Future<Country?> goToSelectCountryScreen() {
+    return Navigator.push(
       _context,
-      MaterialPageRoute(builder: (_) => const SelectCountryScreen()),
+      MaterialPageRoute(
+        builder: (_) => const SelectCountryScreen(),
+      ),
     );
+  }
+
+  @override
+  void closeSelectCountryScreen(Country selectedCountry) {
+    Navigator.pop(_context, selectedCountry);
   }
 
   @override

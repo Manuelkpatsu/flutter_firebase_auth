@@ -7,6 +7,8 @@ import 'package:get_it/get_it.dart';
 
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
+import 'screens/login/phone/country/select_country_tile_bloc.dart';
+import 'screens/login/phone/country/select_country_tile_event.dart';
 import 'screens/login/phone/number/enter_number_bloc.dart';
 import 'screens/login/phone/number/enter_number_event.dart';
 import 'screens/login/phone/phone_flow_coordinator.dart';
@@ -43,5 +45,12 @@ void setUpLocator() {
     ),
   );
 
-
+  /// SelectCountryScreen
+  get.registerFactoryParam<SelectCountryTileBloc, BuildContext,
+      StreamController<SelectCountryTileEvent>>(
+        (context, eventController) => SelectCountryTileBloc(
+      eventController,
+      get<MyPhoneFlowCoordinator>(param1: context),
+    ),
+  );
 }
