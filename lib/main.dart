@@ -5,7 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterfirebaseauth/generated/l10n.dart';
 import 'package:flutterfirebaseauth/locator.dart';
 
-import 'router.dart';
 import 'screens/welcome/welcome_screen.dart';
 
 Future<void> main() async {
@@ -54,8 +53,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: WelcomeScreen.routeName,
-      onGenerateRoute: AppRouter.generateRoute,
+      home: const WelcomeScreen(),
     );
   }
 }

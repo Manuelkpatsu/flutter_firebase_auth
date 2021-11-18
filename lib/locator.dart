@@ -7,6 +7,8 @@ import 'package:get_it/get_it.dart';
 
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
+import 'screens/login/phone/number/enter_number_bloc.dart';
+import 'screens/login/phone/number/enter_number_event.dart';
 import 'screens/login/phone/phone_flow_coordinator.dart';
 import 'screens/welcome/welcome_bloc.dart';
 import 'screens/welcome/welcome_event.dart';
@@ -29,4 +31,17 @@ void setUpLocator() {
       MyPhoneFlowCoordinator(context),
     ),
   );
+
+  /// EnterNumberScreen
+  get.registerFactoryParam<EnterNumberBloc, BuildContext,
+      StreamController<EnterNumberEvent>>(
+        (context, eventController) => EnterNumberBloc(
+      context,
+      eventController,
+      get<MyPhoneFlowCoordinator>(param1: context),
+      get<UserRepository>(),
+    ),
+  );
+
+
 }

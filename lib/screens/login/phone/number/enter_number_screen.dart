@@ -1,5 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutterfirebaseauth/generated/l10n.dart';
+
+import '../../../../locator.dart';
+import 'enter_number_bloc.dart';
+import 'enter_number_event.dart';
+import 'enter_number_listenable.dart';
 
 class EnterNumberScreen extends StatefulWidget {
   static const routeName = '/enter_phone_number';
@@ -11,10 +18,19 @@ class EnterNumberScreen extends StatefulWidget {
 }
 
 class _EnterNumberScreenState extends State<EnterNumberScreen> {
+  late final EnterNumberBloc bloc;
+  final eventController = StreamController<EnterNumberEvent>();
   final phoneNumberController = TextEditingController();
 
   @override
+  void initState() {
+    bloc = get<EnterNumberBloc>(param1: context, param2: eventController);
+    super.initState();
+  }
+
+  @override
   void dispose() {
+    bloc.dispose();
     phoneNumberController.dispose();
     super.dispose();
   }
@@ -33,7 +49,7 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -72,10 +88,19 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
       top: MediaQuery.of(context).padding.top,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: const LinearProgressIndicator(
-          backgroundColor: Colors.white,
-          minHeight: 3,
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+        child: ValueListenableBuilder<bool>(
+          valueListenable: bloc.progressIndicator,
+          child: const LinearProgressIndicator(
+            backgroundColor: Colors.white,
+            minHeight: 3,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+          ),
+          builder: (context, showProgress, child) {
+            return Visibility(
+              visible: showProgress,
+              child: child!,
+            );
+          },
         ),
       ),
     );
@@ -90,7 +115,7 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
 
   Widget countryFlagImage() {
     return InkWell(
-      onTap: () {},
+      onTap: () => eventController.add(GoToSelectCountryScreenEvent()),
       child: Container(
         height: 50,
         padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -100,11 +125,17 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/flags/gh.png',
-              width: 35,
-              height: 24,
-              fit: BoxFit.cover,
+            ValueListenableBuilder<String>(
+              valueListenable: bloc.countryFlagImage,
+              builder: (context, countryCode, child) {
+                return Image.asset(
+                  //TODO Replace with country code picker
+                  'assets/flags/${countryCode.toLowerCase()}.png',
+                  width: 35,
+                  height: 24,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
             const Icon(
               Icons.arrow_drop_down,
@@ -126,26 +157,28 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            '+233',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-          ),
+          ValueListenableBuilder<String>(
+              valueListenable: bloc.countryDialCode,
+              builder: (context, countryDialCode, child) {
+                return Text(
+                  countryDialCode,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                );
+              }),
           const SizedBox(width: 5),
           Expanded(
             child: TextFormField(
-              controller: phoneNumberController,
-              decoration: InputDecoration(
-                hintText: S.of(context).phoneNumberHint,
-                hintStyle:
-                TextStyle(fontSize: 18, color: Colors.grey.shade400),
-                contentPadding: const EdgeInsets.symmetric(vertical: 13),
-                border: InputBorder.none,
-              ),
-              keyboardType: TextInputType.phone,
-              textInputAction: TextInputAction.done,
-              autofocus: true,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-            ),
+                controller: phoneNumberController,
+                decoration: InputDecoration(
+                  hintText: S.of(context).phoneNumberHint,
+                  hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade400),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 13),
+                  border: InputBorder.none,
+                ),
+                keyboardType: TextInputType.phone,
+                textInputAction: TextInputAction.done,
+                autofocus: true,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400)),
           )
         ],
       ),
@@ -164,19 +197,31 @@ class _EnterNumberScreenState extends State<EnterNumberScreen> {
   Widget nextButton() {
     return ConstrainedBox(
       constraints: const BoxConstraints.tightFor(height: 45, width: 120),
-      child: ElevatedButton(
-            onPressed: () {},
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(S.of(context).next, style: const TextStyle(fontSize: 16)),
-                const SizedBox(width: 10),
-                const Icon(Icons.arrow_forward),
-              ],
-            ),
+      child: ValueListenableBuilder<bool>(
+        valueListenable: bloc.nextButton,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(S.of(context).next, style: const TextStyle(fontSize: 16)),
+            const SizedBox(width: 10),
+            const Icon(Icons.arrow_forward)
+          ],
+        ),
+        builder: (context, enableButton, child) {
+          return ElevatedButton(
+            onPressed: enableButton
+                ? () => eventController.add(
+                      VerifyPhoneNumberEvent(
+                        phoneNumberController.text.trim().toString(),
+                      ),
+                    )
+                : null,
+            child: child,
             style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
-          )
+          );
+        },
+      ),
     );
   }
 }
