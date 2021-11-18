@@ -44,7 +44,14 @@ class EnterNumberBloc extends PhoneBloc<EnterNumberModelData> {
   }
 
   void _goToSelectCountryScreen() {
-    _phoneFlowCoordinator.goToSelectCountryScreen();
+    _phoneFlowCoordinator.goToSelectCountryScreen().then((selectedCountry) {
+      if (selectedCountry != null) {
+        value = value.copyWith(
+          countryCode: selectedCountry.code,
+          countryDialCode: selectedCountry.dialCode,
+        );
+      }
+    });
   }
 
   @override
@@ -58,5 +65,4 @@ class EnterNumberBloc extends PhoneBloc<EnterNumberModelData> {
     _eventController.close();
     super.dispose();
   }
-
 }

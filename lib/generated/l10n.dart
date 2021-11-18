@@ -156,6 +156,26 @@ class S {
       args: [message],
     );
   }
+
+  /// `Select a country`
+  String get selectCountry {
+    return Intl.message(
+      'Select a country',
+      name: 'selectCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for a country`
+  String get searchForCountry {
+    return Intl.message(
+      'Search for a country',
+      name: 'searchForCountry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

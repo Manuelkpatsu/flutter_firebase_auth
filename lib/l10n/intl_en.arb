@@ -11,6 +11,8 @@
   "signInError": "Failed to sign in: {error}",
   "phoneNumberRequired": "Phone number is required.",
   "invalidPhoneNumber": "The phone number you entered is invalid.",
-  "phoneNumberVerificationFailed": "Phone number verification failed: {message}"
+  "phoneNumberVerificationFailed": "Phone number verification failed: {message}",
 
+  "selectCountry": "Select a country",
+  "searchForCountry": "Search for a country"
 }

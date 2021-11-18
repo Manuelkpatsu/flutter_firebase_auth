@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberRequired" : MessageLookupByLibrary.simpleMessage("Phone number is required."),
     "phoneNumberVerificationFailed" : m0,
     "phoneSignIn" : MessageLookupByLibrary.simpleMessage("Phone Sign In"),
+    "searchForCountry" : MessageLookupByLibrary.simpleMessage("Search for a country"),
+    "selectCountry" : MessageLookupByLibrary.simpleMessage("Select a country"),
     "signInError" : m1,
     "signInSuccessfulWithNullUser" : MessageLookupByLibrary.simpleMessage("Phone number verified and user signed in but user is null"),
     "title" : MessageLookupByLibrary.simpleMessage("Flutter\nAuth"),

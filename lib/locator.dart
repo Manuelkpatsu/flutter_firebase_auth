@@ -7,6 +7,9 @@ import 'package:get_it/get_it.dart';
 
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
+import 'screens/login/phone/country/select_country_bloc.dart';
+import 'screens/login/phone/country/select_country_domain_model.dart';
+import 'screens/login/phone/country/select_country_event.dart';
 import 'screens/login/phone/country/select_country_tile_bloc.dart';
 import 'screens/login/phone/country/select_country_tile_event.dart';
 import 'screens/login/phone/number/enter_number_bloc.dart';
@@ -37,7 +40,7 @@ void setUpLocator() {
   /// EnterNumberScreen
   get.registerFactoryParam<EnterNumberBloc, BuildContext,
       StreamController<EnterNumberEvent>>(
-        (context, eventController) => EnterNumberBloc(
+    (context, eventController) => EnterNumberBloc(
       context,
       eventController,
       get<MyPhoneFlowCoordinator>(param1: context),
@@ -46,9 +49,17 @@ void setUpLocator() {
   );
 
   /// SelectCountryScreen
+  get.registerFactory(() => SelectCountryDomainModel(get<CountryRepository>()));
+  get.registerFactoryParam<SelectCountryBloc, BuildContext,
+      StreamController<SelectCountryEvent>>(
+    (context, eventController) => SelectCountryBloc(
+      eventController,
+      get<SelectCountryDomainModel>(),
+    ),
+  );
   get.registerFactoryParam<SelectCountryTileBloc, BuildContext,
       StreamController<SelectCountryTileEvent>>(
-        (context, eventController) => SelectCountryTileBloc(
+    (context, eventController) => SelectCountryTileBloc(
       eventController,
       get<MyPhoneFlowCoordinator>(param1: context),
     ),
