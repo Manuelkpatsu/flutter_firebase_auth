@@ -13,6 +13,13 @@
   "invalidPhoneNumber": "The phone number you entered is invalid.",
   "phoneNumberVerificationFailed": "Phone number verification failed: {message}",
 
+  "enterOTP": "Enter the 6-digit code sent to you at {phoneNumber}",
+  "otpHint": "Enter the OTP code",
+  "verifyTitle": "Verify your phone number",
+  "incorrectSMSCode": "The SMS code provided is incorrect.",
+  "resendCode": "Resend code by SMS",
+  "resendCodeIn": "Resend code in 0:{countDownTimeInSeconds}",
+
   "selectCountry": "Select a country",
   "searchForCountry": "Search for a country"
 }

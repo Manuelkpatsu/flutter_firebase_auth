@@ -157,6 +157,66 @@ class S {
     );
   }
 
+  /// `Enter the 6-digit code sent to you at {phoneNumber}`
+  String enterOTP(Object phoneNumber) {
+    return Intl.message(
+      'Enter the 6-digit code sent to you at $phoneNumber',
+      name: 'enterOTP',
+      desc: '',
+      args: [phoneNumber],
+    );
+  }
+
+  /// `Enter the OTP code`
+  String get otpHint {
+    return Intl.message(
+      'Enter the OTP code',
+      name: 'otpHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify your phone number`
+  String get verifyTitle {
+    return Intl.message(
+      'Verify your phone number',
+      name: 'verifyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The SMS code provided is incorrect.`
+  String get incorrectSMSCode {
+    return Intl.message(
+      'The SMS code provided is incorrect.',
+      name: 'incorrectSMSCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend code by SMS`
+  String get resendCode {
+    return Intl.message(
+      'Resend code by SMS',
+      name: 'resendCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend code in 0:{countDownTimeInSeconds}`
+  String resendCodeIn(Object countDownTimeInSeconds) {
+    return Intl.message(
+      'Resend code in 0:$countDownTimeInSeconds',
+      name: 'resendCodeIn',
+      desc: '',
+      args: [countDownTimeInSeconds],
+    );
+  }
+
   /// `Select a country`
   String get selectCountry {
     return Intl.message(

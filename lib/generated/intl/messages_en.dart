@@ -19,24 +19,34 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static m0(message) => "Phone number verification failed: ${message}";
+  static m0(phoneNumber) => "Enter the 6-digit code sent to you at ${phoneNumber}";
 
-  static m1(error) => "Failed to sign in: ${error}";
+  static m1(message) => "Phone number verification failed: ${message}";
+
+  static m2(countDownTimeInSeconds) => "Resend code in 0:${countDownTimeInSeconds}";
+
+  static m3(error) => "Failed to sign in: ${error}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "enterOTP" : m0,
     "enterPhoneNumber" : MessageLookupByLibrary.simpleMessage("Enter your mobile number"),
+    "incorrectSMSCode" : MessageLookupByLibrary.simpleMessage("The SMS code provided is incorrect."),
     "invalidPhoneNumber" : MessageLookupByLibrary.simpleMessage("The phone number you entered is invalid."),
     "next" : MessageLookupByLibrary.simpleMessage("Next"),
+    "otpHint" : MessageLookupByLibrary.simpleMessage("Enter the OTP code"),
     "phoneNumberHint" : MessageLookupByLibrary.simpleMessage("Mobile number"),
     "phoneNumberRequired" : MessageLookupByLibrary.simpleMessage("Phone number is required."),
-    "phoneNumberVerificationFailed" : m0,
+    "phoneNumberVerificationFailed" : m1,
     "phoneSignIn" : MessageLookupByLibrary.simpleMessage("Phone Sign In"),
+    "resendCode" : MessageLookupByLibrary.simpleMessage("Resend code by SMS"),
+    "resendCodeIn" : m2,
     "searchForCountry" : MessageLookupByLibrary.simpleMessage("Search for a country"),
     "selectCountry" : MessageLookupByLibrary.simpleMessage("Select a country"),
-    "signInError" : m1,
+    "signInError" : m3,
     "signInSuccessfulWithNullUser" : MessageLookupByLibrary.simpleMessage("Phone number verified and user signed in but user is null"),
     "title" : MessageLookupByLibrary.simpleMessage("Flutter\nAuth"),
+    "verifyTitle" : MessageLookupByLibrary.simpleMessage("Verify your phone number"),
     "youMayReceiveSMS" : MessageLookupByLibrary.simpleMessage("If you continue, you may receive an SMS for verification.")
   };
 }
