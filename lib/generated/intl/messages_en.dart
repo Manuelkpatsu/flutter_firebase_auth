@@ -29,9 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "emailAddress" : MessageLookupByLibrary.simpleMessage("Email address"),
+    "emailCannotBeEmpty" : MessageLookupByLibrary.simpleMessage("Email cannot be empty."),
     "enterOTP" : m0,
     "enterPhoneNumber" : MessageLookupByLibrary.simpleMessage("Enter your mobile number"),
     "incorrectSMSCode" : MessageLookupByLibrary.simpleMessage("The SMS code provided is incorrect."),
+    "invalidEmail" : MessageLookupByLibrary.simpleMessage("The email you entered is invalid."),
     "invalidPhoneNumber" : MessageLookupByLibrary.simpleMessage("The phone number you entered is invalid."),
     "next" : MessageLookupByLibrary.simpleMessage("Next"),
     "otpHint" : MessageLookupByLibrary.simpleMessage("Enter the OTP code"),
@@ -39,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberRequired" : MessageLookupByLibrary.simpleMessage("Phone number is required."),
     "phoneNumberVerificationFailed" : m1,
     "phoneSignIn" : MessageLookupByLibrary.simpleMessage("Phone Sign In"),
+    "receiptsWillBeSent" : MessageLookupByLibrary.simpleMessage("Receipts will be sent to your email address"),
     "resendCode" : MessageLookupByLibrary.simpleMessage("Resend code by SMS"),
     "resendCodeIn" : m2,
     "searchForCountry" : MessageLookupByLibrary.simpleMessage("Search for a country"),
@@ -46,7 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "signInError" : m3,
     "signInSuccessfulWithNullUser" : MessageLookupByLibrary.simpleMessage("Phone number verified and user signed in but user is null"),
     "title" : MessageLookupByLibrary.simpleMessage("Flutter\nAuth"),
+    "verificationEmailSent" : MessageLookupByLibrary.simpleMessage("A verification email has been sent to your new email."),
     "verifyTitle" : MessageLookupByLibrary.simpleMessage("Verify your phone number"),
+    "whatsYourEmail" : MessageLookupByLibrary.simpleMessage("What\'s your email address?"),
     "youMayReceiveSMS" : MessageLookupByLibrary.simpleMessage("If you continue, you may receive an SMS for verification.")
   };
 }

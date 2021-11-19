@@ -21,5 +21,12 @@
   "resendCodeIn": "Resend code in 0:{countDownTimeInSeconds}",
 
   "selectCountry": "Select a country",
-  "searchForCountry": "Search for a country"
+  "searchForCountry": "Search for a country",
+
+  "whatsYourEmail": "What's your email address?",
+  "receiptsWillBeSent": "Receipts will be sent to your email address",
+  "emailAddress": "Email address",
+  "emailCannotBeEmpty": "Email cannot be empty.",
+  "invalidEmail": "The email you entered is invalid.",
+  "verificationEmailSent": "A verification email has been sent to your new email."
 }

@@ -236,6 +236,66 @@ class S {
       args: [],
     );
   }
+
+  /// `What's your email address?`
+  String get whatsYourEmail {
+    return Intl.message(
+      'What\'s your email address?',
+      name: 'whatsYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receipts will be sent to your email address`
+  String get receiptsWillBeSent {
+    return Intl.message(
+      'Receipts will be sent to your email address',
+      name: 'receiptsWillBeSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email address`
+  String get emailAddress {
+    return Intl.message(
+      'Email address',
+      name: 'emailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email cannot be empty.`
+  String get emailCannotBeEmpty {
+    return Intl.message(
+      'Email cannot be empty.',
+      name: 'emailCannotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email you entered is invalid.`
+  String get invalidEmail {
+    return Intl.message(
+      'The email you entered is invalid.',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A verification email has been sent to your new email.`
+  String get verificationEmailSent {
+    return Intl.message(
+      'A verification email has been sent to your new email.',
+      name: 'verificationEmailSent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
