@@ -8,6 +8,7 @@ import 'package:tuple/tuple.dart';
 
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
+import 'screens/app/app_entry_bloc.dart';
 import 'screens/login/phone/country/select_country_bloc.dart';
 import 'screens/login/phone/country/select_country_domain_model.dart';
 import 'screens/login/phone/country/select_country_event.dart';
@@ -31,6 +32,13 @@ void setUpLocator() {
   get.registerFactory(() => CountryRepository());
   get.registerFactoryParam<MyPhoneFlowCoordinator, BuildContext, void>(
     (context, _) => MyPhoneFlowCoordinator(context),
+  );
+
+  /// App Entry
+  get.registerFactoryParam<AppEntryBloc, void, void>(
+    (_, empty) => AppEntryBloc(
+      get<UserRepository>(),
+    ),
   );
 
   /// Home screen

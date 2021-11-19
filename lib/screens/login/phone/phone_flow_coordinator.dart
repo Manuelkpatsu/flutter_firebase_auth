@@ -45,9 +45,10 @@ class MyPhoneFlowCoordinator implements PhoneFlowCoordinator {
 
   @override
   void goToProfileScreen() {
-    Navigator.push(
+    Navigator.pushAndRemoveUntil(
       _context,
       MaterialPageRoute(builder: (_) => const ProfileScreen()),
+      (Route<dynamic> route) => false,
     );
   }
 
