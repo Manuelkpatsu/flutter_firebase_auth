@@ -8,6 +8,7 @@ import 'package:tuple/tuple.dart';
 
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
+import 'screens/account/account_flow_coordinator.dart';
 import 'screens/app/app_entry_bloc.dart';
 import 'screens/login/phone/country/select_country_bloc.dart';
 import 'screens/login/phone/country/select_country_domain_model.dart';
@@ -32,6 +33,9 @@ void setUpLocator() {
   get.registerFactory(() => CountryRepository());
   get.registerFactoryParam<MyPhoneFlowCoordinator, BuildContext, void>(
     (context, _) => MyPhoneFlowCoordinator(context),
+  );
+  get.registerFactoryParam<MyAccountFlowCoordinator, BuildContext, void>(
+    (context, _) => MyAccountFlowCoordinator(context),
   );
 
   /// App Entry
