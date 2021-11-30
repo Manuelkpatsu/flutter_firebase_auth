@@ -48,5 +48,9 @@
   "cropImage": "Crop image",
 
   "updateEmail": "Update email",
-  "enterEmailAddress": "Enter email address"
+  "enterEmailAddress": "Enter email address",
+
+  "logout": "Logout",
+  "successfulLogout": "You successfully logged out.",
+  "logoutFailure": "An error occurred logging out. Please Try again."
 }

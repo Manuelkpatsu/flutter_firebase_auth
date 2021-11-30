@@ -28,10 +28,7 @@ class EditAccountBloc extends ValueNotifier<EditAccountModelData> {
       : super(const EditAccountModelData());
 
   void init() {
-    _userRepository
-        .userChanges()
-        .listen((user) => _refreshUI(user))
-        .onError((error) {
+    _userRepository.userChanges().listen((user) => _refreshUI(user)).onError((error) {
       _logger.e('Error updating user info', error);
     });
 
@@ -73,6 +70,9 @@ class EditAccountBloc extends ValueNotifier<EditAccountModelData> {
         final updateEmailEvent = event as GoToUpdateEmailEvent;
         final updateEmailArgument = UpdateEmailArgument(updateEmailEvent.email);
         _accountFlowCoordinator.goToUpdateEmailScreen(updateEmailArgument);
+        break;
+      case LogoutEvent:
+        _logout();
         break;
     }
   }
@@ -151,8 +151,7 @@ class EditAccountBloc extends ValueNotifier<EditAccountModelData> {
           backgroundColor: Colors.white,
           hideBottomControls: true,
           showCropGrid: false,
-          cropFrameColor: Colors.transparent
-      ),
+          cropFrameColor: Colors.transparent),
       // TODO iOS UI settings
     );
   }
@@ -168,9 +167,9 @@ class EditAccountBloc extends ValueNotifier<EditAccountModelData> {
         double progress = snapshot.bytesTransferred / snapshot.totalBytes;
         _logger.i(
           'Uploading image... '
-              'progress = $progress, '
-              'transferred = ${snapshot.bytesTransferred}, '
-              'total = ${snapshot.totalBytes}',
+          'progress = $progress, '
+          'transferred = ${snapshot.bytesTransferred}, '
+          'total = ${snapshot.totalBytes}',
         );
         value = value.copyWith(uploadProgress: progress);
       });
@@ -190,6 +189,21 @@ class EditAccountBloc extends ValueNotifier<EditAccountModelData> {
   Future<void> _updateImage(String photoURL) {
     _logger.i('Updating user image');
     return _userRepository.updateProfilePhoto(photoURL);
+  }
+
+  void _logout() {
+    value = value.copyWith(loggingOut: true);
+
+    _userRepository
+        .signOut()
+        .then((_) => _accountFlowCoordinator.goToWelcomeScreen())
+        .whenComplete(() {
+      value = value.copyWith(loggingOut: false);
+      addEvent(ShowSnackBarEvent(S.current.successfulLogout));
+    }).catchError((error) {
+      _logger.e('Error logging out', error);
+      addEvent(ShowSnackBarEvent(S.current.logoutFailure));
+    });
   }
 
   @override

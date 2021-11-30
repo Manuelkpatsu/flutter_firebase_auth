@@ -456,6 +456,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You successfully logged out.`
+  String get successfulLogout {
+    return Intl.message(
+      'You successfully logged out.',
+      name: 'successfulLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred logging out. Please Try again.`
+  String get logoutFailure {
+    return Intl.message(
+      'An error occurred logging out. Please Try again.',
+      name: 'logoutFailure',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

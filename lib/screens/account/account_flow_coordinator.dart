@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebaseauth/screens/account/edit/edit_account_screen.dart';
+import 'package:flutterfirebaseauth/screens/welcome/welcome_screen.dart';
 
 import 'email/update_email_argument.dart';
 import 'email/update_email_screen.dart';
@@ -28,6 +29,9 @@ abstract class AccountFlowCoordinator {
 
   /// Closes [UpdateEmailScreen]
   void closeUpdateEmailScreen();
+
+  /// Navigates to [WelcomeScreen]
+  void goToWelcomeScreen();
 }
 
 class MyAccountFlowCoordinator implements AccountFlowCoordinator {
@@ -71,6 +75,15 @@ class MyAccountFlowCoordinator implements AccountFlowCoordinator {
     Navigator.push(
       _context,
       MaterialPageRoute(builder: (_) => const EditAccountScreen()),
+    );
+  }
+
+  @override
+  void goToWelcomeScreen() {
+    Navigator.pushAndRemoveUntil(
+      _context,
+      MaterialPageRoute(builder: (_) => const WelcomeScreen()),
+          (Route<dynamic> route) => false,
     );
   }
 }

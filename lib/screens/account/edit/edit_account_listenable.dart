@@ -4,6 +4,11 @@ import 'package:functional_listener/functional_listener.dart';
 import 'edit_account_bloc.dart';
 
 extension EditAccountListenable on EditAccountBloc {
+  /// Exposes a [bool].
+  ///
+  /// True if the progress indicator should be shown, false otherwise.
+  ValueListenable<bool> get progressIndicator => map((m) => m.loggingOut);
+
   /// The profile photo to display.
   ValueListenable<String?> get accountImage => map((m) => m.photoURL);
 
@@ -22,4 +27,9 @@ extension EditAccountListenable on EditAccountBloc {
   /// Progress of the image upload.
   ValueListenable<double?> get imageUploadProgressIndicator =>
       map((m) => m.uploadProgress);
+
+  /// Exposes a [bool].
+  ///
+  /// True if the button should be enabled, false otherwise.
+  ValueListenable<bool> get logoutButton => map((m) => !m.loggingOut);
 }

@@ -30,6 +30,9 @@ class GoToUpdateEmailEvent extends EditAccountBlocEvent {
   GoToUpdateEmailEvent(this.email);
 }
 
+@immutable
+class LogoutEvent extends EditAccountBlocEvent {}
+
 ///
 /// Events handled by the state
 ///

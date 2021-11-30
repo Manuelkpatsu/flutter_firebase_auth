@@ -9,6 +9,7 @@ class EditAccountModelData extends Equatable {
   final String? email;
   final bool emailVerified;
   final double? uploadProgress;
+  final bool loggingOut;
 
   const EditAccountModelData({
     this.photoURL,
@@ -17,6 +18,7 @@ class EditAccountModelData extends Equatable {
     this.email,
     this.emailVerified = false,
     this.uploadProgress,
+    this.loggingOut = false,
   });
 
   EditAccountModelData copyWith({
@@ -26,6 +28,7 @@ class EditAccountModelData extends Equatable {
     String? email,
     bool? emailVerified,
     double? uploadProgress,
+    bool? loggingOut
   }) {
     return EditAccountModelData(
       photoURL: photoURL ?? this.photoURL,
@@ -34,6 +37,7 @@ class EditAccountModelData extends Equatable {
       email: email ?? this.email,
       emailVerified: emailVerified ?? this.emailVerified,
       uploadProgress: uploadProgress,
+      loggingOut: loggingOut ?? this.loggingOut,
     );
   }
 
@@ -45,5 +49,6 @@ class EditAccountModelData extends Equatable {
     email,
     emailVerified,
     uploadProgress,
+    loggingOut,
   ];
 }

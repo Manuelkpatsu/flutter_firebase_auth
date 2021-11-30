@@ -45,7 +45,32 @@ class EditAccountBuilder extends StatelessWidget {
             emailAddressText(),
             const SizedBox(height: 5),
             emailAddressTextField(),
+            const SizedBox(height: 30),
+            logoutButton(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget verifyingPhoneNumberIndicator(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).padding.top,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: ValueListenableBuilder<bool>(
+          valueListenable: bloc.progressIndicator,
+          child: const LinearProgressIndicator(
+            backgroundColor: Colors.white,
+            minHeight: 3,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+          ),
+          builder: (context, showProgress, child) {
+            return Visibility(
+              visible: showProgress,
+              child: child!,
+            );
+          },
         ),
       ),
     );
@@ -244,6 +269,34 @@ class EditAccountBuilder extends StatelessWidget {
             },
           )
         ],
+      ),
+    );
+  }
+
+  Widget logoutButton() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints.tightFor(height: 45, width: 120),
+        child: ValueListenableBuilder<bool>(
+          valueListenable: bloc.logoutButton,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.logout),
+              const SizedBox(width: 10),
+              Text(S.current.logout, style: const TextStyle(fontSize: 16)),
+            ],
+          ),
+          builder: (context, enableButton, child) {
+            return ElevatedButton(
+              onPressed: enableButton ? () => bloc.addEvent(LogoutEvent()) : null,
+              child: child,
+              style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+            );
+          },
+        ),
       ),
     );
   }
