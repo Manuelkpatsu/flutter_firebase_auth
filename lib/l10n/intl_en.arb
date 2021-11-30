@@ -28,5 +28,25 @@
   "emailAddress": "Email address",
   "emailCannotBeEmpty": "Email cannot be empty.",
   "invalidEmail": "The email you entered is invalid.",
-  "verificationEmailSent": "A verification email has been sent to your new email."
+  "verificationEmailSent": "A verification email has been sent to your new email.",
+
+  "fullName": "Full name",
+  "phoneNumber": "Phone number",
+  "account": "Account",
+
+  "enterFullName": "Enter full name",
+  "nameCannotBeEmpty": "Name cannot be empty.",
+  "update": "Update",
+  "nameUpdated": "Name updated.",
+  "nameUpdateFailed": "Name update failed.",
+
+  "takePhoto": "Take photo",
+  "chooseFromLibrary": "Choose from library",
+  "photoUpdateFailed": "Photo update failed",
+  "photoUpdated": "Photo updated.",
+  "updatePhoto": "Update photo",
+  "cropImage": "Crop image",
+
+  "updateEmail": "Update email",
+  "enterEmailAddress": "Enter email address"
 }

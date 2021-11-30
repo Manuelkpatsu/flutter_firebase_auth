@@ -9,19 +9,22 @@ import 'package:flutterfirebaseauth/repository/user_repository.dart';
 import 'package:logger/logger.dart';
 
 import '../../util.dart';
+import '../account_flow_coordinator.dart';
 import 'update_email_event.dart';
 import 'update_email_model_data.dart';
 
-abstract class UpdateEmailBloc extends ValueNotifier<UpdateEmailModelData> {
+class UpdateEmailBloc extends ValueNotifier<UpdateEmailModelData> {
   final _logger = Logger();
   final BuildContext _context;
   final StreamController<UpdateEmailEvent> _eventController;
   final UserRepository _userRepository;
+  final AccountFlowCoordinator _accountFlowCoordinator;
 
   UpdateEmailBloc(
       this._context,
       this._eventController,
       this._userRepository,
+      this._accountFlowCoordinator,
       ) : super(const UpdateEmailModelData()) {
     _eventController.stream
         .listen((event) => _handleEvent(event))
@@ -76,7 +79,7 @@ abstract class UpdateEmailBloc extends ValueNotifier<UpdateEmailModelData> {
   }
 
   void onVerificationEmailSent() {
-
+    _accountFlowCoordinator.closeUpdateEmailScreen();
   }
 
   @override

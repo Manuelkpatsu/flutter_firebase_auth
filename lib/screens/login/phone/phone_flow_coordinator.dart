@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebaseauth/model/country.dart';
-import 'package:flutterfirebaseauth/screens/account/profile/profile_screen.dart';
+import 'package:flutterfirebaseauth/screens/account/edit/edit_account_screen.dart';
 
 import 'country/select_country_screen.dart';
 import 'number/enter_number_screen.dart';
@@ -47,7 +47,7 @@ class MyPhoneFlowCoordinator implements PhoneFlowCoordinator {
   void goToProfileScreen() {
     Navigator.pushAndRemoveUntil(
       _context,
-      MaterialPageRoute(builder: (_) => const ProfileScreen()),
+      MaterialPageRoute(builder: (_) => const EditAccountScreen()),
       (Route<dynamic> route) => false,
     );
   }

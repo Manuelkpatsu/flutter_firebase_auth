@@ -9,6 +9,12 @@ import 'package:tuple/tuple.dart';
 import 'repository/country_repository.dart';
 import 'repository/user_repository.dart';
 import 'screens/account/account_flow_coordinator.dart';
+import 'screens/account/email/update_email_bloc.dart';
+import 'screens/account/email/update_email_event.dart';
+import 'screens/account/name/update_name_bloc.dart';
+import 'screens/account/name/update_name_event.dart';
+import 'screens/account/edit/edit_account_bloc.dart';
+import 'screens/account/edit/edit_account_event.dart';
 import 'screens/app/app_entry_bloc.dart';
 import 'screens/login/phone/country/select_country_bloc.dart';
 import 'screens/login/phone/country/select_country_domain_model.dart';
@@ -90,6 +96,37 @@ void setUpLocator() {
       tuple.item2,
       get<MyPhoneFlowCoordinator>(param1: context),
       get<UserRepository>(),
+    ),
+  );
+
+  /// UpdateEmailScreen
+  get.registerFactoryParam<UpdateEmailBloc, BuildContext,
+      StreamController<UpdateEmailEvent>>(
+    (context, eventController) => UpdateEmailBloc(
+      context,
+      eventController,
+      get<UserRepository>(),
+      get<MyAccountFlowCoordinator>(param1: context),
+    ),
+  );
+
+  /// EditAccountScreen
+  get.registerFactoryParam<EditAccountBloc, BuildContext,
+      StreamController<EditAccountEvent>>(
+        (context, eventController) => EditAccountBloc(
+      get<UserRepository>(),
+      get<MyAccountFlowCoordinator>(param1: context),
+    ),
+  );
+
+  /// UpdateNameScreen
+  get.registerFactoryParam<UpdateNameBloc, BuildContext,
+      StreamController<UpdateNameEvent>>(
+    (context, eventController) => UpdateNameBloc(
+      context,
+      eventController,
+      get<UserRepository>(),
+      get<MyAccountFlowCoordinator>(param1: context),
     ),
   );
 }

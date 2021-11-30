@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterfirebaseauth/generated/l10n.dart';
-import 'package:flutterfirebaseauth/screens/account/profile/profile_screen.dart';
+import 'package:flutterfirebaseauth/screens/account/edit/edit_account_screen.dart';
 import 'package:flutterfirebaseauth/screens/welcome/welcome_screen.dart';
 
 import '../../locator.dart';
@@ -57,7 +57,7 @@ class _AppEntryScreenState extends State<AppEntryScreen> {
       home: ValueListenableBuilder<bool>(
         valueListenable: bloc.isAuthenticated,
         builder: (context, isSignedIn, child) =>
-            isSignedIn ? const ProfileScreen() : const WelcomeScreen(),
+            isSignedIn ? const EditAccountScreen() : const WelcomeScreen(),
       ),
     );
   }

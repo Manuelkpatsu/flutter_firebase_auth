@@ -296,6 +296,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Full name`
+  String get fullName {
+    return Intl.message(
+      'Full name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter full name`
+  String get enterFullName {
+    return Intl.message(
+      'Enter full name',
+      name: 'enterFullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name cannot be empty.`
+  String get nameCannotBeEmpty {
+    return Intl.message(
+      'Name cannot be empty.',
+      name: 'nameCannotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name updated.`
+  String get nameUpdated {
+    return Intl.message(
+      'Name updated.',
+      name: 'nameUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name update failed.`
+  String get nameUpdateFailed {
+    return Intl.message(
+      'Name update failed.',
+      name: 'nameUpdateFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take photo`
+  String get takePhoto {
+    return Intl.message(
+      'Take photo',
+      name: 'takePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose from library`
+  String get chooseFromLibrary {
+    return Intl.message(
+      'Choose from library',
+      name: 'chooseFromLibrary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Photo update failed`
+  String get photoUpdateFailed {
+    return Intl.message(
+      'Photo update failed',
+      name: 'photoUpdateFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Photo updated.`
+  String get photoUpdated {
+    return Intl.message(
+      'Photo updated.',
+      name: 'photoUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update photo`
+  String get updatePhoto {
+    return Intl.message(
+      'Update photo',
+      name: 'updatePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crop image`
+  String get cropImage {
+    return Intl.message(
+      'Crop image',
+      name: 'cropImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update email`
+  String get updateEmail {
+    return Intl.message(
+      'Update email',
+      name: 'updateEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter email address`
+  String get enterEmailAddress {
+    return Intl.message(
+      'Enter email address',
+      name: 'enterEmailAddress',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
