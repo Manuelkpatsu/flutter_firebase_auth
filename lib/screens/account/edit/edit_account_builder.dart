@@ -222,7 +222,10 @@ class EditAccountBuilder extends StatelessWidget {
             child: ValueListenableBuilder<String?>(
               valueListenable: bloc.phoneNumberTextField,
               builder: (context, phoneNumber, child) {
-                return Text(phoneNumber ?? '', style: const TextStyle(fontSize: 16));
+                return Text(
+                  phoneNumber ?? '',
+                  style: const TextStyle(fontSize: 16),
+                );
               },
             ),
           ),
@@ -254,7 +257,10 @@ class EditAccountBuilder extends StatelessWidget {
               valueListenable: bloc.emailAddressTextField,
               builder: (context, emailAddress, child) {
                 email = emailAddress;
-                return Text(email ?? '', style: const TextStyle(fontSize: 16));
+                return Text(
+                  email ?? '',
+                  style: const TextStyle(fontSize: 16),
+                );
               },
             ),
           ),
@@ -286,14 +292,19 @@ class EditAccountBuilder extends StatelessWidget {
             children: [
               const Icon(Icons.logout),
               const SizedBox(width: 10),
-              Text(S.current.logout, style: const TextStyle(fontSize: 16)),
+              Text(
+                S.current.logout,
+                style: const TextStyle(fontSize: 16),
+              ),
             ],
           ),
           builder: (context, enableButton, child) {
             return ElevatedButton(
               onPressed: enableButton ? () => bloc.addEvent(LogoutEvent()) : null,
               child: child,
-              style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+              ),
             );
           },
         ),
